@@ -154,7 +154,53 @@ BadRecovery (not to be confused with the iOS exploit) is the preferred unenrollm
 
 13. Congrats! Now you can set up ChromeOS with a personal Google account.
 
+## ChromeOS v123 and below - Pencil Method
+This can harm your Chromebook if done incorrectly. Perform at your own risk.
+Unenrolling by bridging pins on the motherboard.
 
+The proper guide was created by [Darkn.](https://GitHub.com/NotDarkn)
+
+
+Requirements
+Conductive material (staple, tin foil, paperclip, etc.)
+Scissors
+Tape (optional, recommended)
+USB drive or SD card with SH1MMER flashed
+Screwdriver corresponding to the screws of your Chromebook
+Dismantling Hardware & Bridging Pins
+Instructions
+With a screwdriver, remove each screw from the bottom of your Chromebook.
+Disconnect the battery. The battery cable placement varies between models.
+On the motherboard, find the 8-pin chip with pins sticking out or in. It likely has winbond or GigaDevice branding, and it may show 25Q64[xx] or 25Q128[xx] below the branding. It may be located on the back of the motherboard.
+Shape a piece of your conductive material long enough to connect to both sides of the chip and small enough to not make contact with multiple pins on either side of the chip.
+Place one end of the conductive material on pin 3 (WP). [SOIC-8] [WSON-8]
+Place the other end of the conductive material on pin 8 (VCC). [SOIC-8] [WSON-8]
+If necessary, place tape on top of the chip to keep the conductive material on the pins. [SOIC-8] [WSON-8]
+Connect the battery.
+Performing the Exploit
+Instructions
+Boot into SH1MMER with the USB.
+In the SH1MMER menu, navigate to Utilities.
+Select Un-Enroll Device. This is necessary even if the process fails.
+In the Utilities menu, select Open Bash.
+In the bash shell, run the following commands:
+flashrom --wp-disable
+/usr/share/vboot/bin/set_gbb_flags.sh 0x8090
+
+If the commands fail, the pins are not bridged correctly.
+
+Reboot the Chromebook by pressing Refresh ↻ + Power ⏻.
+Press Ctrl + D to bypass the OS verification screen.
+Boot into Chrome OS.
+Press Ctrl + Alt + F2 to enter the VT2 shell.
+Log in to the shell as root.
+Run the following commands:
+tpm_manager_client take_ownership
+cryptohome --action=remove_firmware_management_parameters
+
+Press Ctrl + Alt + F1 to exit the VT2 shell.
+Press Ctrl+Alt+Shift+R.
+Click Powerwash.
 
 ## ChromeOS v129 and below - icarus
 Icarus is pretty sick. In a nutshell, a server that you should probably self-host acts as a proxy between you and Google, and you connect to it with a Chromebook. This Chromebook will attempt to send requests to Google to obtain enrollment and device status, this proxy server takes those requests, and modifies it to only obtain unenrolled device information, tricking the Chromebook into thinking that the Chromebook was deprovisioned, allowing you to login with a personal Google account, killing FWMP.
@@ -162,3 +208,7 @@ Icarus is pretty sick. In a nutshell, a server that you should probably self-hos
 1. Follow SH1mmer steps, but then open Payloads, and run Icarus in payloads.
 2. Reboot into ChromeOS, and connect to rather your proxy server which you can set up from [here](https://github.com/CodingHarryJarry/silly-tempfix) or get in [this Discord server after verifiying and checking Kajigs for Icarus servers](https://discord.gg/unblock)
 
+## ChromeOS v132 and below - Br0ker
+First download the RMA shim corresponding to your Board name here: https://github.com/ading2210/sh1mmer/releases
+Then flash onto a USB via [Chromebook recovery utility](https://chromewebstore.google.com/detail/chromebook-recovery-utili/pocpnlppkickgojjlmhdmidojbmbodfm?hl=en)
+press  `esc+⟳+⏻ ` (`esc+refresh+power`) then `ctrl + d` and then plug in the USB and select Unenroll in the Payload and yeah, that should be it
