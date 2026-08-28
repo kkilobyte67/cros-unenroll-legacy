@@ -212,3 +212,8 @@ Icarus is pretty sick. In a nutshell, a server that you should probably self-hos
 First download the RMA shim corresponding to your Board name here: https://github.com/ading2210/sh1mmer/releases
 Then flash onto a USB via [Chromebook recovery utility](https://chromewebstore.google.com/detail/chromebook-recovery-utili/pocpnlppkickgojjlmhdmidojbmbodfm?hl=en)
 press  `esc+⟳+⏻ ` (`esc+refresh+power`) then `ctrl + d` and then plug in the USB and select Unenroll in the Payload and yeah, that should be it
+
+## ChromeOS v142 and below - BadSH1mmer 
+First download the RMA shim corresponding to your Board name here: https://github.com/crosbreaker/badsh1mmer/releases/tag/latest
+Then flash onto a USB via [Chromebook recovery utility](https://chromewebstore.google.com/detail/chromebook-recovery-utili/pocpnlppkickgojjlmhdmidojbmbodfm?hl=en)
+press  `esc+⟳+⏻ ` (`esc+refresh+power`) then `ctrl + d` and then plug in the USB and select Unenroll in the Payload and yeah, that should be it.
