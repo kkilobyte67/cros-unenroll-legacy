@@ -11,6 +11,8 @@
   * [CryptoSmite](#chromeos-v118-and-below---cryptosmite)
   * [BadRecovery](#chromeos-v124-and-below---badrecovery--formerly-olybmmer-------i-have-no-idea-how-accurate-this-guide-is-going-to-be-because-i-have-never-used-badrecovery-before----)
   * [icarus](##chromeos-v129-and-below---icarus)
+  * [RecoMod](##chromeos-v114-and-below--recomod)
+  * [Br0ker](##chromeos-v140-and-below-br0ker)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
@@ -147,3 +149,10 @@ BadRecovery (not to be confused with the iOS exploit) is the preferred unenrollm
 <img src="/img/tutorial/badrecovery.jpg" width="400">
 
 13. Congrats! Now you can set up ChromeOS with a personal Google account.
+
+## ChromeOS v129 and below - icarus
+Icarus is pretty sick. In a nutshell, a server that you should probably self-host acts as a proxy between you and Google, and you connect to it with a Chromebook. This Chromebook will attempt to send requests to Google to obtain enrollment and device status, this proxy server takes those requests, and modifies it to only obtain unenrolled device information, tricking the Chromebook into thinking that the Chromebook was deprovisioned, allowing you to login with a personal Google account, killing FWMP.
+
+1. Follow SH1mmer steps, but then open Payloads, and run Icarus in payloads.
+2. Reboot into ChromeOS, and connect to rather your proxy server which you can set up from [here](https://github.com/CodingHarryJarry/silly-tempfix) or get in [this Discord server after verifiying and checking Kajigs for Icarus servers](https://discord.gg/unblock)
+
