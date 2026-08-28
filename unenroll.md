@@ -217,3 +217,12 @@ press  `esc+⟳+⏻ ` (`esc+refresh+power`) then `ctrl + d` and then plug in the
 First download the RMA shim corresponding to your Board name here: https://github.com/crosbreaker/badsh1mmer/releases/tag/latest
 Then flash onto a USB via [Chromebook recovery utility](https://chromewebstore.google.com/detail/chromebook-recovery-utili/pocpnlppkickgojjlmhdmidojbmbodfm?hl=en)
 press  `esc+⟳+⏻ ` (`esc+refresh+power`) then `ctrl + d` and then plug in the USB and select Unenroll in the Payload and yeah, that should be it.
+
+  * [SHroot](#chromeos-v101-and-below-shroot)
+  * [SH1mmer](#chromeos-v110-and-below-shimmer)
+  * [CryptoSmite](#chromeos-v118-and-below-cryptosmite)
+  * [BadRecovery](#chromeos-v124-and-below-badrecovery)
+  * [Pencil Method](#chromeos-v123-and-below-pencil-method)
+  * [Icarus](#chromeos-v129-and-below-icarus)
+  * [Br0ker](#chromeos-v132-and-below-br0ker)
+  * [BadSH1mmer](#chromeos-v142-and-below-badsh1mmer)
