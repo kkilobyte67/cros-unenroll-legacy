@@ -53,7 +53,7 @@ Pretty cool universal USB-less unenrollment exploit that requires you to have a 
 `set_cellular_ppp \';dbus-send${IFS}--system${IFS}--print-reply${IFS}--dest=org.chromium.SessionManager${IFS}/org/chromium/SessionManager${IFS}org.chromium.SessionManagerInterface.ClearForcedReEnrollmentVpd;exit;\'`
 
 Just like this \
-<img src="https://github.com/kkilobyte/ditch-cros/blob/main/img/tutorial/crosh-rootesc.png?raw=true" alt="crosh-rootesc.png"/><
+<img src="https://github.com/kkilobyte/ditch-cros/blob/main/img/tutorial/crosh-rootesc.png?raw=true" alt="crosh-rootesc.png"/>
 
 5. Press `enter`.
 6. Back up all data to an external media (like a USB flash drive) or a cloud service (like Google Drive).
@@ -88,3 +88,62 @@ The preferred unenrollment method for ChromeOS v110 and below is using SH1mmer's
 14. You should be greeted at a "OS Verification is off" screen but with no black text in the corner. Press `ctrl+d` whenever you Chromebook turns on and you see this screen. 
 15. Setup ChromeOS as normal
 16. Now you can set up ChromeOS with a personal Google account.
+
+## ChromeOS v118 and below - CryptoSmite
+The preferred unenrollment method for ChromeOS v118 and below is using SH1mmer's not-as-cool "CryptoSmite" option. This writes a corrupted cryptohome to your data partition, or "stateful", using some random Google account, but this removes FWMP, so you can easily go into Developer Mode with no restrictions.
+
+1. Back up all data to an external storage device or cloud service. You must not use the same storage device as the device you will be using CryptoSmite with.
+2. If you are using ChromeOS, MacOS, or Windows, download [this extension](https://chromewebstore.google.com/detail/chromebook-recovery-utili/pocpnlppkickgojjlmhdmidojbmbodfm). (Linux users skip this step.) If you only have the Chromebook and this is blocked, try using [Skiovox](https://skiovox.com/skiovox.pdf). If you are using a version where Skiovox is patched, you can't use CryptoSmite anyways.
+3. [Identify](/device-identify.md) what Chromebook *board* you have.
+4. Find and download your *board*'s SH1mmer [here](https://dl.darkn.bio/SH1mmer/Prebuilt/Legacy), if it's missing, good luck, use BadRecovery or CRSH2TTY.
+5. Open your "Downloads" folder in the "Files" app, double click on the SH1mmer zip file, and drag the SH1mmer bin file to your Downloads folder.
+6. If you are using Linux, skip to step 8, otherwise open a Chrome tab, click on the puzzle icon in the top right, and click on "Chromebook Recovery Utility".
+
+<img src="/img/tutorial/chrome-recovery-extension.png">
+7. Click on the ⚙ (settings) icon in the corner and click "Use local image" and the select your SH1mmer bin file.
+<img src="/img/tutorial/cru-local-image.png">
+
+8. If you don't use Linux skip to step 9, otherwise, open a terminal and run `lsblk` or `fdisk -l` and verify what your USB drive is, once you have verified, run `cd ~/Downloads; sudo dd if=<sh1mmer file> of=/dev/sd<usb letter> oflag=direct status=progress bs=16M` and wait. Skip to step 10.
+9. Plug in the USB drive that you want to use for SH1mmer, do ***NOT*** use the USB drive with your data if you backed up data to a USB drive.
+10. Verify this USB drive doesn't have important data and then wait for it to flash.
+11. Once finished, press `esc+⟳+⏻ ` (`esc+refresh+power`) and then `ctrl+d`. Then press `esc+⟳+⏻ ` (`esc+refresh+power`) again and insert the USB.
+12. Wait for SH1mmer to load, once you are greeted with a scary menu with lots of options.
+<img src="/img/tutorial/sh1mmer.jpg" width="400">
+
+13. Press `p` and then select "Cryptosmite" with the arrow keys.
+14. Wait for ChromeOS to reboot.
+15. Connect to internet.
+16. Remove the SH1mmer USB from the Chromebook and press `esc+⟳+⏻ ` and then `ctrl+d`.
+17. Connect the USB back into the chromebook and press `esc+⟳+⏻ ` again but this time press `h` for `Touch .developer_mode` and then preform an EC reset by pressing `⟳+⏻ ` (`refresh+power`), on the OS verification screen press `ctrl+d`.
+18. Wait for ChromeOS to boot.
+19. QUICKLY!!! press `ctrl+alt+🠞` (above the 2, if you don't have a 🠞 key, press `ctrl+alt+⟳` (refresh, above the 2 or 4) instead).
+20. Now type in `root` and press `enter`.
+21. Run `vpd -i RW_VPD -s check_enrollment=0`
+22. Now run `cryptohome --action=remove_firmware_management_parameters`. If that shows a bunch of `--action=` text, run `device_management_client --action=remove_firmware_management_parameters` instead.
+23. Press `ctrl+alt+🠜` (above the 1), and setup ChromeOS as normal.
+24. If you see `Enterprise enrollment`, quickly boot into SH1mmer, open bash, and run `mkfs.ext4 /dev/mmcblk*p1`, and repeat 13 to 23 again. 
+25. Congrats! Now you can set up ChromeOS with a personal Google account.
+<img src="/img/tutorial/craaskbowl-unroll-google.png" width="400">
+
+## ChromeOS v124 and below - BadRecovery (formerly OlyBmmer) <!-- i have no idea how accurate this guide is going to be because i have never used badrecovery before -->
+BadRecovery (not to be confused with the iOS exploit) is the preferred unenrollment method for ChromeOS v124 and below. It leverages a vulnerability in recovery images to get arbitrary code execution or to chain to other exploits (such as Cryptosmite).
+
+1. Back up all data to an external storage device or cloud service. You must not use the same storage device as the device you will be using BadRecovery with.
+2. If you are using ChromeOS, MacOS, or Windows, download [this extension](https://chromewebstore.google.com/detail/chromebook-recovery-utili/pocpnlppkickgojjlmhdmidojbmbodfm). (Linux users skip this step.) 
+3. [Identify](/device-identify.md) what Chromebook *board* you have.
+4. Find and download your *board*'s BadRecovery [here](https://dl.darkn.bio/BadRecovery), if it's missing, good luck, use CRSH2TTY or [build BadRecovery yourself](https://github.com/BinBashBanana/badrecovery).
+5. Open your "Downloads" folder in the "Files" app, double click on the BadRecovery zip file, and drag the BadRecovery bin file to your Downloads folder.
+6. If you are using Linux, skip to step 8, otherwise open a Chrome tab, click on the puzzle icon in the top right, and click on "Chromebook Recovery Utility".
+
+<img src="/img/tutorial/chrome-recovery-extension.png">
+7. Click on the ⚙ (settings) icon in the corner and click "Use local image" and the select your BadRecovery bin file.
+<img src="/img/tutorial/cru-local-image.png">
+
+8. If you don't use Linux skip to step 9, otherwise, open a terminal and run `lsblk` or `fdisk -l` and verify what your USB drive is, once you have verified, run `cd ~/Downloads; sudo dd if=<badrecovery file> of=/dev/sd<usb letter> oflag=direct status=progress bs=16M` and wait. Skip to step 10.
+9. Plug in the USB drive that you want to use for BadRecovery, do ***NOT*** use the USB drive with your data if you backed up data to a USB drive.
+10. Verify this USB drive doesn't have important data and then wait for it to flash.
+11. Once finished, press `esc+⟳+⏻ ` (`esc+refresh+power`). ONLY IF the image you downloaded has "`dev-only`" in the file name, press `ctrl+d` and then `esc+⟳+⏻ ` (`esc+refresh+power`) again and insert the USB, otherwise just insert the USB normally. You should now be waiting for your Chromebook to recover, wait for it to recover.
+12. Once it recovers, you should now be at a weird looking hacker screen that says BadRecovery, just enter developer mode by pressing `esc+⟳+⏻ ` (`esc+refresh+power`) and then `ctrl+d` and `enter`, and then press `ctrl+d` whenever you see a developer mode/OS verification warning.
+<img src="/img/tutorial/badrecovery.jpg" width="400">
+
+13. Congrats! Now you can set up ChromeOS with a personal Google account.
