@@ -11,8 +11,8 @@
   * [CryptoSmite](#chromeos-v118-and-below---cryptosmite)
   * [BadRecovery](#chromeos-v124-and-below---badrecovery--formerly-olybmmer-------i-have-no-idea-how-accurate-this-guide-is-going-to-be-because-i-have-never-used-badrecovery-before----)
   * [icarus](##chromeos-v129-and-below---icarus)
-  * [RecoMod](##chromeos-v114-and-below--recomod)
-  * [Br0ker](##chromeos-v140-and-below-br0ker)
+  * [Br0ker](##chromeos-v132-and-below-br0ker)
+  * [BadSH1mmer](##chromeos-v142-and-below-badsh1mmer)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
@@ -33,8 +33,11 @@ In the event of a kernskip, you should downgrade to the versions connected to yo
 | 0<sup>1</sup> | any up to v111<sup>3</sup> | SHroot (to v101) or SH1mmer (to v110) |
 | 1 | any up to v111<sup>3</sup> | SHroot (to v101) or SH1mmer (to v110) |
 | 2<sup>2</sup> | v112 to v119<sup>4</sup>| Cryptosmite (to v118) |
-| 3 | v120 to v125<sup>5</sup> | BadRecovery |
+| 3 | v120 to v125<sup>5</sup> | BadRecovery or Pencil Method (to v123) |
 | 4 | v126 to v131 | icarus (to v129) |
+| 5 | v132 | Br0ker | 
+| 6 | v142 | BadSH1mmer | BadSH1mmer |
+
 
 <sub><sup>Kv0 is usually a factory setting bug<sup>1</sup></sup></sub> \
 <sub><sup>On some devices, kv2 is actually crOS v111<sup>2</sup></sup></sub> \
@@ -149,6 +152,8 @@ BadRecovery (not to be confused with the iOS exploit) is the preferred unenrollm
 <img src="/img/tutorial/badrecovery.jpg" width="400">
 
 13. Congrats! Now you can set up ChromeOS with a personal Google account.
+
+
 
 ## ChromeOS v129 and below - icarus
 Icarus is pretty sick. In a nutshell, a server that you should probably self-host acts as a proxy between you and Google, and you connect to it with a Chromebook. This Chromebook will attempt to send requests to Google to obtain enrollment and device status, this proxy server takes those requests, and modifies it to only obtain unenrolled device information, tricking the Chromebook into thinking that the Chromebook was deprovisioned, allowing you to login with a personal Google account, killing FWMP.
