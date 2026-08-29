@@ -10,10 +10,10 @@
   * [SH1mmer](#chromeos-v110-and-below---sh1mmer)
   * [CryptoSmite](#chromeos-v118-and-below---cryptosmite)
   * [BadRecovery](#chromeos-v124-and-below---badrecovery--formerly-olybmmer-------i-have-no-idea-how-accurate-this-guide-is-going-to-be-because-i-have-never-used-badrecovery-before----)
-  * [Pencil Method](#chromeos-v123-and-below-pencil-method)
+  * [Pencil Method](#chromeos-v123-and-below---pencil-method)
   * [icarus](##chromeos-v129-and-below---icarus)
-  * [Br0ker](#chromeos-v132-and-below-br0ker)
-  * [BadSH1mmer](##hromeos-v142-and-below-badsh1mmer)
+  * [Br0ker](#chromeos-v132-and-below---br0ker)
+  * [BadSH1mmer](##hromeos-v142-and-below---badsh1mmer)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
